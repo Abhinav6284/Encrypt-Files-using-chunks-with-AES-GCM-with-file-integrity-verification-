@@ -1,31 +1,76 @@
-# File Encryption Tool
 
-A simple, secure, and professional web-based file encryption tool built with Flask and modern web technologies. This application provides military-grade AES-256-GCM encryption for your files with an intuitive, minimal interface.
+## 🔒 Security Features
 
-![File Encryption Tool](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Flask](https://img.shields.io/badge/Flask-3.0.0-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![Security](https://img.shields.io/badge/Encryption-AES--256--GCM-red)
+- **AES-256-GCM Encryption**: Industry-standard encryption algorithm
+- **Cryptographic Randomness**: Secure key and nonce generation using Python's `secrets` module
+- **Chunk-based Processing**: Handles large files efficiently without loading entirely into memory
+- **No Key Storage**: Encryption keys are never stored on the server
+- **Input Validation**: Comprehensive validation of file uploads and encryption keys
+- **Secure File Handling**: Uses secure filename handling to prevent path traversal attacks
 
-## ✨ Features
+## 🎨 Design Philosophy
 
-- **🔐 Military-Grade Encryption**: AES-256-GCM encryption with cryptographic randomness
-- **🎯 Simple Interface**: Clean, minimal, and professional design
-- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **🔑 Secure Key Generation**: Cryptographically secure 256-bit key generation
-- **📄 Multiple Output Formats**: Save encrypted files as text (.txt) or binary (.enc) formats
-- **🖱️ Drag & Drop Support**: Easy file selection with drag-and-drop functionality
-- **⚡ Real-time Feedback**: Instant validation and user feedback
-- **🛡️ Zero Knowledge**: Keys are never stored on the server
-- **🌐 Cross-Platform**: Runs on Windows, macOS, and Linux
+This tool follows a **minimal and professional** design approach:
 
-## 🚀 Quick Start
+- **Clean Typography**: System fonts for native appearance
+- **Minimal Color Palette**: Professional blue-gray (#2c3e50) and muted grays
+- **Intuitive Navigation**: Tab-based navigation for clear workflow
+- **Responsive Layout**: Mobile-first design that works on all devices
+- **Consistent Spacing**: Uniform spacing and padding throughout
+- **Subtle Interactions**: Clean hover states and transitions
 
-### Prerequisites
+## 🔧 Technical Details
 
-- Python 3.8 or higher
-- pip (Python package installer)
+### Encryption Process
+1. File is read in 64KB chunks for memory efficiency
+2. Each chunk is encrypted using AES-256-GCM with a unique nonce
+3. Encrypted data is structured with length prefixes for robust parsing
+4. Output can be saved as Base64-encoded text or raw binary
 
-### Installation
+### API Endpoints
+- `GET /` - Serves the main interface
+- `GET /generate-key` - Generates a new encryption key
+- `POST /encrypt` - Encrypts uploaded files
+- `POST /decrypt` - Decrypts uploaded files
 
-1. **Clone the repository:**
+## 🚨 Security Considerations
+
+- **Keep your encryption keys safe**: Without the key, encrypted files cannot be recovered
+- **Use strong, unique keys**: Always generate new keys for different encryption sessions
+- **Secure key storage**: Consider using a password manager or secure offline storage
+- **File size limits**: Default maximum file size is 100MB (configurable in app.py)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🐛 Bug Reports & Feature Requests
+
+If you encounter any issues or have suggestions for improvements, please:
+
+1. Check existing issues on GitHub
+2. Create a new issue with detailed information
+3. Include steps to reproduce for bug reports
+4. Provide clear use cases for feature requests
+
+## 📚 Additional Resources
+
+- [Cryptography Documentation](https://cryptography.io/en/latest/)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [AES-GCM Specification](https://tools.ietf.org/html/rfc5116)
+
+## ⚠️ Disclaimer
+
+This tool is provided for educational and personal use. While it implements industry-standard encryption, users should evaluate their specific security requirements and consider professional security audits for production use cases.
+
+---
+
+**Made with ❤️ for secure file encryption**
